@@ -46,7 +46,7 @@ After pushing to GitHub:
 5. Choose folder: `/docs`
 6. Click "Save"
 
-Your site will be available at: `https://YOUR_USERNAME.github.io/homes-hear-oregon-cbo-kit/`
+Your site will be available at: `https://kamrawr.github.io/homes-hear-oregon-cbo-kit/`
 
 ## Local Development
 

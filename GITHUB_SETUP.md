@@ -18,8 +18,8 @@ After creating the GitHub repository, run these commands:
 ```powershell
 cd "$env:USERPROFILE\OneDrive\Development\homes-hear-oregon-cbo-kit"
 
-# Add the remote repository (replace YOUR_USERNAME with your GitHub username)
-git remote add origin https://github.com/YOUR_USERNAME/homes-hear-oregon-cbo-kit.git
+# Add the remote repository (replace kamrawr with your GitHub username)
+git remote add origin https://github.com/kamrawr/homes-hear-oregon-cbo-kit.git
 
 # Rename branch to main (if needed)
 git branch -M main
@@ -41,10 +41,10 @@ Enable the website for your repository:
 
 Your website will be available at:
 ```
-https://YOUR_USERNAME.github.io/homes-hear-oregon-cbo-kit/
+https://kamrawr.github.io/homes-hear-oregon-cbo-kit/
 ```
 
-(Replace YOUR_USERNAME with your actual GitHub username)
+(Replace kamrawr with your actual GitHub username)
 
 ## 4. Configure Repository Settings (Optional)
 
@@ -66,7 +66,7 @@ Add the description:
 ### Website
 Add your GitHub Pages URL:
 ```
-https://YOUR_USERNAME.github.io/homes-hear-oregon-cbo-kit/
+https://kamrawr.github.io/homes-hear-oregon-cbo-kit/
 ```
 
 ## 4. Next Steps

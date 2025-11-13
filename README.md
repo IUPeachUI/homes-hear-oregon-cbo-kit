@@ -14,7 +14,7 @@ It does **not** mirror or replace official guidance. Instead, it:
 This repository includes two comprehensive GitHub Pages websites:
 
 ### 🏠 **Main CBO Guide**
-**URL:** `https://YOUR_USERNAME.github.io/homes-hear-oregon-cbo-kit/`
+**URL:** `https://kamrawr.github.io/homes-hear-oregon-cbo-kit/`
 
 Comprehensive 6-page website covering:
 - Program overview (HOMES & HEAR)
@@ -25,7 +25,7 @@ Comprehensive 6-page website covering:
 - Fund braiding rules and strategies
 
 ### 💰 **Fund Braiding Guide** 
-**URL:** `https://YOUR_USERNAME.github.io/homes-hear-oregon-cbo-kit/braiding-funds.html`
+**URL:** `https://kamrawr.github.io/homes-hear-oregon-cbo-kit/braiding-funds.html`
 
 Advanced guide for combining multiple funding sources:
 - Federal fund-braiding rules and prohibitions
