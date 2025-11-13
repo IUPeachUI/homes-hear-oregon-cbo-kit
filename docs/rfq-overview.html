@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HOMES & HEAR CBO Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f7fafc;
+      --bg-alt: #ffffff;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --border: #e2e8f0;
+      --text: #111827;
+      --muted: #4b5563;
+      --danger: #b91c1c;
+      --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.12);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #eff6ff, #f8fafc 45%, #f1f5f9);
+      color: var(--text);
+    }
+
+    .app-shell {
+      max-width: 1200px;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #22c55e);
+      color: white;
+      padding: 24px 22px 20px;
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+      top: -120px;
+      right: -60px;
+      opacity: 0.9;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .header-main {
+      max-width: 640px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 1.9rem;
+      letter-spacing: 0.01em;
+    }
+
+    .header-subtitle {
+      margin: 0 0 10px;
+      font-size: 0.98rem;
+      color: #e5e7eb;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35);
+      font-size: 0.75rem;
+      backdrop-filter: blur(4px);
+      background: rgba(15,23,42,0.24);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill span.icon {
+      font-size: 0.85rem;
+    }
+
+    .header-stats {
+      min-width: 230px;
+      max-width: 280px;
+      background: rgba(15,23,42,0.45);
+      border-radius: 18px;
+      padding: 10px 12px 12px;
+      border: 1px solid rgba(148,163,184,0.6);
+    }
+
+    .header-stats-title {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      margin-bottom: 6px;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin: 3px 0;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+    }
+
+    .stat-row strong {
+      font-size: 0.92rem;
+      color: #fefce8;
+    }
+
+    .badge-soft {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.58);
+      font-size: 0.72rem;
+      color: #e5e7eb;
+      margin-top: 6px;
+    }
+
+    .badge-soft span {
+      font-size: 0.9rem;
+    }
+
+    /* Tabs */
+
+    .tabs-shell {
+      margin-top: 18px;
+      background: rgba(248, 250, 252, 0.92);
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 10px 12px 8px;
+      background: rgba(241,245,249,0.9);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-button {
+      border: none;
+      background: transparent;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease, transform 0.1s ease;
+    }
+
+    .tab-button span.icon {
+      font-size: 0.95rem;
+    }
+
+    .tab-button.active {
+      background: #ffffff;
+      color: var(--accent);
+      box-shadow: 0 6px 14px rgba(15,23,42,0.08);
+      transform: translateY(-1px);
+    }
+
+    .tab-button:hover:not(.active) {
+      background: rgba(255,255,255,0.8);
+    }
+
+    .tabs-body {
+      padding: 14px 16px 18px;
+    }
+
+    .tab-section {
+      display: none;
+    }
+
+    .tab-section.active {
+      display: block;
+    }
+
+    /* Layout inside sections */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 18px;
+    }
+
+    .panel {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 12px 14px 14px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .panel-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .panel-subtitle {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    h2, h3 {
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 0.86rem;
+      line-height: 1.5;
+      margin: 4px 0 8px;
+      color: var(--muted);
+    }
+
+    ul {
+      margin: 4px 0 8px 18px;
+      padding: 0;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 2px 8px;
+      font-size: 0.72rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    /* Role cards */
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .role-card {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 9px 9px 10px;
+      background: #ffffff;
+      cursor: pointer;
+      transition: box-shadow 0.15s ease, transform 0.12s ease, border-color 0.15s ease, background 0.15s ease;
+      position: relative;
+    }
+
+    .role-card.active {
+      border-color: var(--accent);
+      box-shadow: 0 10px 22px rgba(37,99,235,0.22);
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .role-title {
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 3px;
+      color: #0f172a;
+    }
+
+    .role-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .role-chip {
+      font-size: 0.72rem;
+      color: #1e40af;
+      background: #dbeafe;
+      padding: 2px 6px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-top: 2px;
+    }
+
+    .role-hotspot {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 0.8rem;
+      color: #4b5563;
+    }
+
+    /* Role details */
+
+    .role-details-title {
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .role-details-body {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .mini-list {
+      margin: 4px 0 4px 16px;
+      padding: 0;
+    }
+
+    .mini-list li {
+      margin-bottom: 3px;
+    }
+
+    /* Decision helper */
+
+    .helper-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 2.2fr);
+      gap: 14px;
+    }
+
+    .helper-form label {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .helper-form select {
+      width: 100%;
+      padding: 6px 8px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 0.82rem;
+      background: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .helper-output {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 14px;
+      padding: 8px 10px 9px;
+      font-size: 0.8rem;
+      min-height: 70px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .helper-output strong {
+      color: #fef3c7;
+    }
+
+    .helper-label {
+      font-size: 0.73rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Accordions */
+
+    .accordion {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .accordion-item + .accordion-item {
+      border-top: 1px solid var(--border);
+    }
+
+    .accordion-header {
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      background: #f9fafb;
+    }
+
+    .accordion-header span.title {
+      font-weight: 500;
+      color: #111827;
+    }
+
+    .accordion-header span.chevron {
+      font-size: 0.9rem;
+      color: #6b7280;
+      transition: transform 0.15s ease;
+    }
+
+    .accordion-header.open span.chevron {
+      transform: rotate(90deg);
+    }
+
+    .accordion-body {
+      padding: 8px 12px 9px;
+      display: none;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: #ffffff;
+    }
+
+    .accordion-body.open {
+      display: block;
+    }
+
+    /* Chips & notes */
+
+    .note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      border-left: 3px solid #c4b5fd;
+      padding-left: 8px;
+      margin-top: 4px;
+    }
+
+    .flag-danger {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .helper-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .role-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      header {
+        padding: 20px 18px 18px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .role-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .tabs-body {
+        padding: 12px 10px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <div class="header-content">
+        <div class="header-main">
+          <h1>HOMES & HEAR: CBO Info Hub</h1>
+          <p class="header-subtitle">
+            A working explainer for community-based organizations supporting Oregon households through
+            the Home Energy Rebate programs.
+          </p>
+          <div class="pill-row">
+            <div class="pill">
+              <span class="icon">🏠</span>
+              <span>HOMES – whole-home efficiency</span>
+            </div>
+            <div class="pill">
+              <span class="icon">⚡</span>
+              <span>HEAR – electrification & appliances</span>
+            </div>
+            <div class="pill">
+              <span class="icon">🤝</span>
+              <span>CBO outreach, intake & navigation</span>
+            </div>
+          </div>
+        </div>
+        <div class="header-stats">
+          <div class="header-stats-title">At a glance</div>
+          <div class="stat-row">
+            <span>Programs</span>
+            <strong>HOMES & HEAR</strong>
+          </div>
+          <div class="stat-row">
+            <span>Launch (est.)</span>
+            <strong>2026</strong>
+          </div>
+          <div class="stat-row">
+            <span>Focus</span>
+            <strong>LMI households</strong>
+          </div>
+          <div class="badge-soft">
+            <span>ℹ️</span>
+            <span>Based on Oct 25 HOMES & HEAR session slides (draft; subject to change).</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tabs-shell" aria-label="HOMES & HEAR CBO information">
+      <nav class="tab-bar" role="tablist">
+        <button class="tab-button active" data-target="tab-overview" role="tab" aria-selected="true">
+          <span class="icon">📚</span>
+          Overview
+        </button>
+        <button class="tab-button" data-target="tab-programs" role="tab" aria-selected="false">
+          <span class="icon">🏗️</span>
+          HOMES vs HEAR
+        </button>
+        <button class="tab-button" data-target="tab-rfq" role="tab" aria-selected="false">
+          <span class="icon">📄</span>
+          CBO RFQ Role
+        </button>
+        <button class="tab-button" data-target="tab-helper" role="tab" aria-selected="false">
+          <span class="icon">🧭</span>
+          Intake Helper
+        </button>
+        <button class="tab-button" data-target="tab-faq" role="tab" aria-selected="false">
+          <span class="icon">❓</span>
+          FAQs
+        </button>
+      </nav>
+
+      <section class="tabs-body">
+        <!-- Tab 1: Overview -->
+        <section id="tab-overview" class="tab-section active">
+          <div class="grid-2">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="panel-title">What’s changing?</div>
+                  <div class="panel-subtitle">Where HOMES & HEAR fit in</div>
+                </div>
+                <span class="tag">Context</span>
+              </div>
+              <p>
+                The Home Energy Rebate programs bring new federal funding into Oregon for
+                **whole-home efficiency** and **electrification**. The Oregon Department of
+                Energy is the grantee; Energy Trust of Oregon and Earth Advantage will run
+                most customer-facing delivery.
+              </p>
+              <p>
+                CBOs aren’t expected to become energy auditors or contractors. The main ask
+                is to **help people get in the door**, understand the steps, and not miss out
+                because of paperwork, language, or trust barriers.
+              </p>
+              <ul>
+                <li>HOMES = deeper, modeled savings with trade ally assessors and modelers.</li>
+                <li>HEAR = measure-based rebates for LMI households (e.g., heat pumps, HPWH, stoves, panel).</li>
+                <li>Both rely on **closed trade ally networks** and **income verification**.</li>
+              </ul>
+              <p class="note">
+                Treat this hub as a living explainer. Final rules and RFQ language will
+                come through official channels.
+              </p>
+            </article>
+
+            <aside class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="panel-title">What CBOs are being asked to do</div>
+                  <div class="panel-subtitle">High-level roles</div>
+                </div>
+              </div>
+              <div class="role-grid" aria-label="CBO role selector">
+                <div class="role-card active" data-role="outreach">
+                  <div class="role-hotspot">●</div>
+                  <div class="role-title">Outreach & Education</div>
+                  <div class="role-desc">
+                    Explain programs in community language and context.
+                  </div>
+                  <div class="role-chip">Front door</div>
+                </div>
+                <div class="role-card" data-role="intake">
+                  <div class="role-hotspot">●</div>
+                  <div class="role-title">Intake & Eligibility</div>
+                  <div class="role-desc">
+                    Screen households, collect docs, prep for trade allies.
+                  </div>
+                  <div class="role-chip">Filter & prep</div>
+                </div>
+                <div class="role-card" data-role="navigation">
+                  <div class="role-hotspot">●</div>
+                  <div class="role-title">Navigation & Advocacy</div>
+                  <div class="role-desc">
+                    Help people move through steps and fix issues.
+                  </div>
+                  <div class="role-chip">Guide</div>
+                </div>
+              </div>
+
+              <div id="role-details" style="margin-top:10px;">
+                <div class="role-details-title">Focus: Outreach & Education</div>
+                <div class="role-details-body">
+                  <p>
+                    You help households understand that **new federal rebates are coming**, who
+                    is likely eligible, and what they should do now to be ready.
+                  </p>
+                  <ul class="mini-list">
+                    <li>Use simple, concrete examples of upgrades and benefits.</li>
+                    <li>Clarify that work must use enrolled contractors once the program launches.</li>
+                    <li>Flag that details (amounts, dates) are still being finalized.</li>
+                  </ul>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Tab 2: HOMES vs HEAR -->
+        <section id="tab-programs" class="tab-section">
+          <div class="grid-2">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="panel-title">Program comparison</div>
+                  <div class="panel-subtitle">HOMES vs HEAR in plain terms</div>
+                </div>
+                <span class="tag">Program basics</span>
+              </div>
+              <table style="width:100%; border-collapse:collapse; font-size:0.8rem;">
+                <thead>
+                  <tr style="text-align:left; background:#f9fafb;">
+                    <th style="padding:6px 4px; border-bottom:1px solid var(--border);">Item</th>
+                    <th style="padding:6px 4px; border-bottom:1px solid var(--border);">HOMES</th>
+                    <th style="padding:6px 4px; border-bottom:1px solid var(--border);">HEAR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:5px 4px; border-bottom:1px solid var(--border);">What it pays for</td>
+                    <td style="padding:5px 4px; border-bottom:1px solid var(--border);">
+                      Whole-home retrofit based on % energy savings.
+                    </td>
+                    <td style="padding:5px 4px; border-bottom:1px solid var(--border);">
+                      Individual appliances + enabling measures for LMI.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px 4px; border-bottom:1px solid var(--border);">Who qualifies</td>
+                    <td style="padding:5px 4px; border-bottom:1px solid var(--border);">
+                      All income levels, with set-asides for low-income and multifamily.
+                    </td>
+                    <td style="padding:5px 4px; border-bottom:1px solid var(--border);">
+                      Only households ≤150% AMI (low- and moderate-income).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px 4px; border-bottom:1px solid var(--border);">How it’s calculated</td>
+                    <td style="padding:5px 4px; border-bottom:1px solid var(--border);">
+                      Modeled savings (e.g., 20% or 35%) using approved tools via trade ally.
+                    </td>
+                    <td style="padding:5px 4px; border-bottom:1px solid var(--border);">
+                      Fixed rebate amounts per measure, up to \$14k total per home.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px 4px; border-bottom:1px solid var(--border);">Delivery model</td>
+                    <td style="padding:5px 4px; border-bottom:1px solid var(--border);">
+                      Assessment → modeling → reservation → install → final docs.
+                    </td>
+                    <td style="padding:5px 4px; border-bottom:1px solid var(--border);">
+                      Point-of-sale or contractor-applied rebates + documentation.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px 4px;">CBO sweet spot</td>
+                    <td style="padding:5px 4px;">
+                      Help households commit to deeper work and complete steps.
+                    </td>
+                    <td style="padding:5px 4px;">
+                      Help LMI households qualify and bundle measures smartly.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="note">
+                For many households, the real opportunity is **combining existing programs**
+                with HOMES or HEAR, not choosing just one.
+              </p>
+            </article>
+
+            <aside class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="panel-title">Story examples</div>
+                  <div class="panel-subtitle">How you explain it in practice</div>
+                </div>
+              </div>
+              <p><strong>Example 1 – “Cold drafty house, high bills”</strong></p>
+              <p>
+                You might frame HOMES as: “This is the program that helps you do a **full
+                tune-up** on the home – insulation, duct work, heating – and pays more the
+                more you cut your energy use.”
+              </p>
+              <p><strong>Example 2 – “Gas is expensive, want a heat pump”</strong></p>
+              <p>
+                You might frame HEAR as: “This one is about getting **key electric
+                equipment** like a heat pump or heat pump water heater, plus the panel and
+                wiring to support them, if your income qualifies.”
+              </p>
+              <p class="note">
+                Your job is not to decide the final design. Your job is to help people
+                understand the **lane they’re in** and what paperwork they’ll need.
+              </p>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Tab 3: RFQ / CBO role -->
+        <section id="tab-rfq" class="tab-section">
+          <div class="grid-2">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="panel-title">RFQ to CBOs</div>
+                  <div class="panel-subtitle">What the partnership is about</div>
+                </div>
+                <span class="tag">RFQ framing</span>
+              </div>
+              <p>
+                The RFQ will look for CBOs that can act as **trusted guides** for households
+                that may struggle with technical processes and documentation. The work is
+                not one-size-fits-all; the RFQ is likely to allow CBOs to choose which
+                functions they’re best suited for.
+              </p>
+              <ul>
+                <li>Outreach & education in specific communities.</li>
+                <li>Intake & eligibility screening, including income and housing type.</li>
+                <li>Navigation through trade ally networks and program steps.</li>
+                <li>Documentation support and light case management.</li>
+                <li>Support for stacking HOMES/HEAR with other funding.</li>
+                <li>Feedback to Energy Trust on barriers and improvements.</li>
+              </ul>
+              <p class="note">
+                Think about what you already do well (e.g., tenant support, energy
+                education, case management) and which elements map cleanly to these asks.
+              </p>
+            </article>
+
+            <aside class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="panel-title">Are we a good fit?</div>
+                  <div class="panel-subtitle">Quick self-check</div>
+                </div>
+              </div>
+              <p style="font-size:0.8rem; margin-bottom:6px;">
+                Check the items below that feel true for your organization:
+              </p>
+              <ul style="list-style:none; padding-left:0; font-size:0.8rem;">
+                <li>
+                  <label>
+                    <input type="checkbox" class="fit-check" data-weight="2" />
+                    We already work directly with low- and moderate-income households.
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" class="fit-check" data-weight="2" />
+                    We provide outreach, navigation, or case management today.
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" class="fit-check" data-weight="1" />
+                    We have (or can build) secure systems to handle income documents.
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" class="fit-check" data-weight="1" />
+                    We can provide services in more than one language or via partners.
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" class="fit-check" data-weight="1" />
+                    We’re willing to coordinate closely with trade allies and utilities.
+                  </label>
+                </li>
+              </ul>
+              <div class="helper-output" id="fit-output" style="margin-top:8px;">
+                <div class="helper-label">Informal fit signal</div>
+                <div>
+                  <strong>Score: 0</strong> – No worries if this is low. You can still be a
+                  partner via coalitions or by focusing on a narrower piece (e.g., outreach only).
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Tab 4: Intake helper -->
+        <section id="tab-helper" class="tab-section">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <div class="panel-title">Intake conversation helper</div>
+                <div class="panel-subtitle">Rough guidance for front-line staff</div>
+              </div>
+              <span class="tag">Practice tool</span>
+            </div>
+
+            <div class="helper-grid">
+              <div class="helper-form">
+                <label for="helper-income">Household income band (rough)</label>
+                <select id="helper-income">
+                  <option value="">Select...</option>
+                  <option value="low">&lt; 80% AMI (low-income)</option>
+                  <option value="moderate">80–150% AMI (moderate-income)</option>
+                  <option value="higher">&gt; 150% AMI</option>
+                  <option value="unknown">Unknown / prefers not to say</option>
+                </select>
+
+                <label for="helper-housing">Housing type</label>
+                <select id="helper-housing">
+                  <option value="">Select...</option>
+                  <option value="single-owner">Single-family, owner-occupied</option>
+                  <option value="single-renter">Single-family, renter</option>
+                  <option value="mf-tenant">Multifamily tenant</option>
+                  <option value="mf-owner">Multifamily owner / manager</option>
+                  <option value="mfg-home">Manufactured home</option>
+                </select>
+
+                <label for="helper-goal">Main goal the customer mentions first</label>
+                <select id="helper-goal">
+                  <option value="">Select...</option>
+                  <option value="bills">Lower bills / comfort</option>
+                  <option value="heatpump">Get a heat pump / get off oil or gas</option>
+                  <option value="hw">Fix hot water / HPWH</option>
+                  <option value="repairs">Do repairs so upgrades are even possible</option>
+                  <option value="unclear">Not sure / just heard about “rebates”</option>
+                </select>
+              </div>
+
+              <div class="helper-output" id="helper-output">
+                <div class="helper-label">Suggested direction (informal)</div>
+                <div id="helper-main">
+                  Change the dropdowns on the left to see a suggested lane (HOMES, HEAR, or
+                  “other help first”).
+                </div>
+                <div id="helper-followup"></div>
+              </div>
+            </div>
+            <p class="note" style="margin-top:10px;">
+              This is a **training helper**, not a rulebook. Always follow the latest
+              program guidance and use implementer tools for official eligibility and
+              reservations.
+            </p>
+          </div>
+        </section>
+
+        <!-- Tab 5: FAQ -->
+        <section id="tab-faq" class="tab-section">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <div class="panel-title">FAQs for CBOs</div>
+                <div class="panel-subtitle">Quick answers to common questions</div>
+              </div>
+            </div>
+
+            <div class="accordion" aria-label="Frequently asked questions">
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <span class="title">Do we have to understand every technical rule?</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="accordion-body">
+                  No. Implementers and contractors will handle the deep technical modeling
+                  and eligibility logic. CBOs should have a **working understanding** of
+                  who the programs are for, the basic steps, and where your community
+                  members tend to get stuck.
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <span class="title">Will CBOs receive funding for this work?</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="accordion-body">
+                  Yes, the RFQ is intended to establish **funded partnerships**. Exact
+                  amounts, payment structures, and reporting expectations will be set out
+                  in the formal RFQ and contracts, not in this explainer.
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <span class="title">How risky is the data/PII side for us?</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="accordion-body">
+                  You will likely be supporting income verification and other sensitive
+                  documents. That means you will need **clear privacy policies**, secure
+                  systems, and staff training. If your current systems are not ready, you
+                  can still participate by focusing on outreach and navigation while you
+                  improve your data setup.
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <span class="title">Can we partner as a coalition?</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="accordion-body">
+                  Coalitions are strongly encouraged. For example, one CBO might lead on
+                  administration and contracting, while others focus on specific
+                  communities or geographies.
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <span class="title">What if we already run energy or housing programs?</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="accordion-body">
+                  That’s a plus. The goal is to **integrate HOMES/HEAR into existing
+                  support ecosystems**, not to bolt on a completely separate, confusing
+                  process. The RFQ will want to see how you connect these dots.
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <span class="title">What should we do now, before the RFQ is out?</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="accordion-body">
+                  Start mapping:
+                  <ul class="mini-list">
+                    <li>Which communities you would focus on.</li>
+                    <li>What parts of the scope you can realistically own.</li>
+                    <li>What data/privacy upgrades you might need.</li>
+                    <li>Which partners (CBOs, utilities, contractors) you’d want to team up with.</li>
+                  </ul>
+                  That prep will make your RFQ response and onboarding much smoother.
+                </div>
+              </div>
+            </div>
+            <p class="note" style="margin-top:10px;">
+              This FAQ is meant as a **conversation starter** for your internal team and
+              board as you decide whether and how to respond to the RFQ.
+            </p>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Tabs
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabSections = document.querySelectorAll(".tab-section");
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-target");
+        tabButtons.forEach((b) => {
+          b.classList.toggle("active", b === btn);
+          b.setAttribute("aria-selected", b === btn ? "true" : "false");
+        });
+        tabSections.forEach((section) => {
+          section.classList.toggle("active", section.id === target);
+        });
+      });
+    });
+
+    // Role cards
+    const roleCards = document.querySelectorAll(".role-card");
+    const roleDetails = document.getElementById("role-details");
+
+    const ROLE_COPY = {
+      outreach: {
+        title: "Focus: Outreach & Education",
+        body:
+          "You are the first touchpoint. Your job is to make sure people hear about HOMES & HEAR in a way that feels relevant and safe." +
+          "<ul class='mini-list'>" +
+          "<li>Use existing channels: tenant meetings, mutual aid groups, cultural events.</li>" +
+          "<li>Keep messages simple: who it helps, what it roughly pays for, what to do next.</li>" +
+          "<li>Coordinate with Energy Trust for up-to-date flyers and talking points.</li>" +
+          "</ul>",
+      },
+      intake: {
+        title: "Focus: Intake & Eligibility",
+        body:
+          "You help households cross the 'paperwork bridge' without giving up." +
+          "<ul class='mini-list'>" +
+          "<li>Screen for rough income band, housing type, and utility territory.</li>" +
+          "<li>Support income documentation or categorical eligibility, without oversharing PII.</li>" +
+          "<li>Pass a clean intake packet to trade allies so customers aren’t repeating themselves.</li>" +
+          "</ul>",
+      },
+      navigation: {
+        title: "Focus: Navigation & Advocacy",
+        body:
+          "You track the project so the household doesn’t get lost in the shuffle." +
+          "<ul class='mini-list'>" +
+          "<li>Help schedule assessments and installations where needed.</li>" +
+          "<li>Check in if documents are missing or timelines are slipping.</li>" +
+          "<li>Surface patterns of barriers back to Energy Trust so the system improves over time.</li>" +
+          "</ul>",
+      },
+    };
+
+    roleCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const role = card.getAttribute("data-role");
+        roleCards.forEach((c) => c.classList.toggle("active", c === card));
+        const copy = ROLE_COPY[role];
+        if (copy) {
+          roleDetails.innerHTML =
+            "<div class='role-details-title'>" +
+            copy.title +
+            "</div><div class='role-details-body'><p>" +
+            copy.body +
+            "</p></div>";
+        }
+      });
+    });
+
+    // Fit checker
+    const fitChecks = document.querySelectorAll(".fit-check");
+    const fitOutput = document.getElementById("fit-output");
+
+    function updateFitScore() {
+      let score = 0;
+      fitChecks.forEach((cb) => {
+        if (cb.checked) {
+          score += Number(cb.getAttribute("data-weight") || 1);
+        }
+      });
+      let msg;
+      if (score >= 6) {
+        msg =
+          "<strong>Score: " +
+          score +
+          "</strong> – You look like a strong candidate for a direct RFQ response. Start sketching a scope, staffing plan, and partner map.";
+      } else if (score >= 3) {
+        msg =
+          "<strong>Score: " +
+          score +
+          "</strong> – You likely fit best in a coalition or focused role (outreach, navigation, or a specific community).";
+      } else {
+        msg =
+          "<strong>Score: " +
+          score +
+          "</strong> – Consider partnering with a larger CBO or using this as a learning opportunity while you build capacity.";
+      }
+      fitOutput.innerHTML =
+        "<div class='helper-label'>Informal fit signal</div><div>" + msg + "</div>";
+    }
+
+    fitChecks.forEach((cb) => cb.addEventListener("change", updateFitScore));
+
+    // Intake helper logic
+    const incomeSelect = document.getElementById("helper-income");
+    const housingSelect = document.getElementById("helper-housing");
+    const goalSelect = document.getElementById("helper-goal");
+    const helperMain = document.getElementById("helper-main");
+    const helperFollow = document.getElementById("helper-followup");
+
+    function updateHelper() {
+      const income = incomeSelect.value;
+      const housing = housingSelect.value;
+      const goal = goalSelect.value;
+
+      if (!income && !housing && !goal) {
+        helperMain.textContent =
+          "Change the dropdowns on the left to see a suggested lane (HOMES, HEAR, or “other help first”).";
+        helperFollow.textContent = "";
+        return;
+      }
+
+      let lane = "";
+      let why = "";
+      let next = "";
+
+      // Decide a rough lane
+      if (income === "low" || income === "moderate") {
+        if (goal === "heatpump" || goal === "hw") {
+          lane = "HEAR (electrification & enabling measures)";
+          why =
+            "They’re income-qualified and focused on specific equipment (heat pump / water heater / related electrical work).";
+        } else if (goal === "bills") {
+          lane = "HOMES (whole-home efficiency), possibly with HEAR";
+          why =
+            "They want overall bill and comfort improvements, which points to a package of measures that HOMES is built for.";
+        } else if (goal === "repairs") {
+          lane = "Other programs first (repairs / weatherization) then HOMES/HEAR";
+          why =
+            "If the house has serious repair issues, it’s better to stabilize it first using weatherization or local repair funds.";
+        } else {
+          lane = "HOMES and/or HEAR – needs more probing";
+          why =
+            "They might qualify for both; you’ll want more detail on whether they care more about whole-home improvements or specific equipment.";
+        }
+      } else if (income === "higher") {
+        if (goal === "bills" || goal === "repairs") {
+          lane = "HOMES + existing utility/state programs";
+          why =
+            "Higher-income households can still use HOMES and utility incentives, but HEAR is reserved for ≤150% AMI.";
+        } else {
+          lane = "Existing utility/state programs, possibly HOMES";
+          why =
+            "They may benefit from heat pump or other incentives, but HEAR is LMI-only.";
+        }
+      } else {
+        lane = "“Learn more” pathway";
+        why =
+          "Income is unknown; you can still give basic information and connect them to intake or online tools to see where they land.";
+      }
+
+      // Follow-up questions guidance
+      if (!income) {
+        next +=
+          "Ask: “Roughly where does your household income sit compared to the area average?” or “Have you qualified for programs like SNAP, LIHEAP, or Medicaid?” ";
+      }
+      if (!housing) {
+        next +=
+          "Clarify housing: owner vs renter, and whether they live in a single-family home, manufactured home, or multifamily building. ";
+      }
+      if (!goal) {
+        next +=
+          "Ask: “If you could only fix one thing about your home right now, what would it be?” to get at their primary goal.";
+      }
+
+      helperMain.innerHTML =
+        "<strong>Suggested lane: " + lane + "</strong><br/>" + why;
+      helperFollow.textContent =
+        next ||
+        "Next step: explain in simple terms what that lane means and offer a warm handoff to Energy Trust, Earth Advantage, or a relevant trade ally.";
+    }
+
+    incomeSelect.addEventListener("change", updateHelper);
+    housingSelect.addEventListener("change", updateHelper);
+    goalSelect.addEventListener("change", updateHelper);
+
+    // Accordions
+    const accordionHeaders = document.querySelectorAll(".accordion-header");
+    accordionHeaders.forEach((head) => {
+      head.addEventListener("click", () => {
+        const body = head.nextElementSibling;
+        const open = body.classList.contains("open");
+        // close others
+        document.querySelectorAll(".accordion-body").forEach((b) => b.classList.remove("open"));
+        document.querySelectorAll(".accordion-header").forEach((h) =>
+          h.classList.remove("open")
+        );
+        if (!open) {
+          body.classList.add("open");
+          head.classList.add("open");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

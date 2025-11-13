@@ -34,6 +34,17 @@ Advanced guide for combining multiple funding sources:
 - Documentation and invoicing requirements
 - Risk flags and compliance strategies
 
+### 📋 **CBO RFQ Overview & Interactive Hub**
+**URL:** `https://kamrawr.github.io/homes-hear-oregon-cbo-kit/rfq-overview.html`
+
+Interactive guide for CBOs responding to Energy Trust RFQ:
+- Background on HOMES & HEAR partnership opportunities
+- Scope of work for CBO partners (outreach, intake, navigation)
+- Desired CBO qualifications and partnership structure
+- Expected deliverables and submission requirements
+- **Interactive tools:** Role selector, fit checker, intake conversation helper
+- Timeline from late 2025 through 2026 launch
+
 ## 📂 Repository Use
 
 1. Clone or unzip this repo into your shared drive or GitHub.
