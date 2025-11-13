@@ -11,10 +11,9 @@ It does **not** mirror or replace official guidance. Instead, it:
 
 ## 📖 Online Documentation
 
-This repository includes two comprehensive GitHub Pages websites:
+This repository includes three comprehensive GitHub Pages websites:
 
-### 🏠 **Main CBO Guide**
-**URL:** `https://kamrawr.github.io/homes-hear-oregon-cbo-kit/`
+### 🏠 **[Main CBO Guide](https://kamrawr.github.io/homes-hear-oregon-cbo-kit/)**
 
 Comprehensive 6-page website covering:
 - Program overview (HOMES & HEAR)
@@ -24,8 +23,9 @@ Comprehensive 6-page website covering:
 - Complete resource directory with all official links
 - Fund braiding rules and strategies
 
-### 💰 **Fund Braiding Guide** 
-**URL:** `https://kamrawr.github.io/homes-hear-oregon-cbo-kit/braiding-funds.html`
+**→ [Visit Main Guide](https://kamrawr.github.io/homes-hear-oregon-cbo-kit/)**
+
+### 💰 **[Fund Braiding Guide](https://kamrawr.github.io/homes-hear-oregon-cbo-kit/braiding-funds.html)** 
 
 Advanced guide for combining multiple funding sources:
 - Federal fund-braiding rules and prohibitions
@@ -34,8 +34,9 @@ Advanced guide for combining multiple funding sources:
 - Documentation and invoicing requirements
 - Risk flags and compliance strategies
 
-### 📋 **CBO RFQ Overview & Interactive Hub**
-**URL:** `https://kamrawr.github.io/homes-hear-oregon-cbo-kit/rfq-overview.html`
+**→ [Visit Fund Braiding Guide](https://kamrawr.github.io/homes-hear-oregon-cbo-kit/braiding-funds.html)**
+
+### 📋 **[CBO RFQ Overview & Interactive Hub](https://kamrawr.github.io/homes-hear-oregon-cbo-kit/rfq-overview.html)**
 
 Interactive guide for CBOs responding to Energy Trust RFQ:
 - Background on HOMES & HEAR partnership opportunities
@@ -44,6 +45,8 @@ Interactive guide for CBOs responding to Energy Trust RFQ:
 - Expected deliverables and submission requirements
 - **Interactive tools:** Role selector, fit checker, intake conversation helper
 - Timeline from late 2025 through 2026 launch
+
+**→ [Visit RFQ Overview](https://kamrawr.github.io/homes-hear-oregon-cbo-kit/rfq-overview.html)**
 
 ## 📂 Repository Use
 
